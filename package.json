@@ -1,0 +1,52 @@
+{
+  "name": "protos-tp-checker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebikul/protos-tp-checker.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebikul/protos-tp-checker/issues"
+  },
+  "homepage": "https://github.com/sebikul/protos-tp-checker#readme",
+  "pre-commit": [
+    "lint"
+  ],
+  "dependencies": {
+    "debug": "^4.3.1",
+    "lodash": "^4.17.21",
+    "pickled-cucumber": "2.1.2",
+    "yargs": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/lodash": "4.14.168",
+    "@types/node": "^12.19.5",
+    "@types/yargs": "16.0.1",
+    "@typescript-eslint/eslint-plugin": "^4.22.1",
+    "@typescript-eslint/parser": "^4.22.1",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-react": "^7.23.2",
+    "pre-commit": "1.2.2",
+    "prettier": "^2.3.0",
+    "typescript": "4.2.4"
+  },
+  "scripts": {
+    "build": "npm run lint && tsc",
+    "clean": "npm run clean:dist && npm run clean:node",
+    "clean:dist": "rm -rf dist",
+    "clean:node": "rm -rf node_modules",
+    "lint": "npm run prettier:check && eslint .",
+    "prettier:check": "prettier --check './{src,test}/**/*.{ts,js}'",
+    "prettier:write": "prettier --write './{src,test}/**/*.{ts,js}'",
+    "test": "TS_NODE_FILES=true DEBUG='' cucumber-js --require-module ts-node/register --exit -r src/test/index.ts test-cases",
+    "watch": "tsc -w"
+  }
+}
